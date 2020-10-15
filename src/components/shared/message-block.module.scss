@@ -1,0 +1,22 @@
+@import "../../styles/base.scss";
+
+.message {
+  @include paddingBox;
+  border-radius: $borderRadius;
+  border: $border;
+}
+
+.error {
+  background-color: $errorColor;
+  color: $text_light;
+}
+
+.warning {
+  background-color: $warningColor;
+  color: $text_dark;
+}
+
+.success {
+  background-color: $successColor;
+  color: $text_light;
+}

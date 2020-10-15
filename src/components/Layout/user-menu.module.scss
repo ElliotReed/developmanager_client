@@ -1,0 +1,129 @@
+@import "../../styles/base.scss";
+
+.userMenu {
+  // filler
+  color: $primary;
+  display: grid;
+  place-items: center;
+}
+
+.logged {
+  position: relative;
+  display: inline-block;
+
+  & a {
+    display: block;
+    padding: $padding;
+    color: $black;
+    & :hover {
+      color: $white;
+      background: $primary;
+      cursor: pointer;
+    }
+  }
+
+  &:hover .dropdown {
+    display: block; /* Display the dropdown */
+  }
+
+  &:focus .dropdown {
+    display: block; /* Display the dropdown */
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: flex-end;
+  width: 1.618rem;
+  border: none;
+  background: transparent;
+  padding: $padding * 0.618 0;
+  color: $white;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    outline: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 999;
+  margin: 0;
+  padding: $padding;
+  background: #f2f2f2;
+  display: none;
+  right: -0.38rem;
+  white-space: nowrap;
+  // @include boxShadow;
+  @include gradient($white);
+}
+
+.menu {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  height: 0;
+  margin: 0;
+  min-width: 100%; /* Set width of the dropdown */
+  padding: 0;
+  white-space: nowrap;
+  @include boxShadow;
+  @include border();
+  @include gradient($white);
+  opacity: 0;
+  transition: all $duration ease-in-out;
+  overflow: hidden;
+  & li {
+    display: block;
+  }
+  & :hover {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.menuOpen {
+  height: 6rem;
+  opacity: 1;
+}
+
+.user {
+  padding: 0 $padding;
+  cursor: default;
+  & .email {
+    margin: $margin 0;
+    font-size: 0.725rem;
+  }
+}
+
+.signout {
+  @include border();
+  // border-top: $border;
+  border-top: 1px solid lighten($black, 62);
+  padding: $padding 0 0 0;
+  font-size: 0.725rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.signin {
+  padding: $padding * 0.618 $padding;
+  font-size: 0.725rem;
+  color: $white;
+
+  & a {
+    color: $white;
+    text-decoration: underline;
+  }
+  & span {
+    margin: 0 $margin * 0.38;
+  }
+}

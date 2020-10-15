@@ -1,0 +1,40 @@
+@import "../../../styles/base";
+
+.Selector {
+  $headerHeight: calc(1rem * #{$goldenRatio * $goldenRatio * $goldenRatio});
+  height: 100%;
+  // border: 1px solid $neutral;
+  // margin-right: 1rem;
+  overflow: hidden;
+
+  header {
+    font-weight: bold;
+    // margin: 0;
+    // height: $headerHeight;
+    // line-height: $headerHeight;
+    // text-align: center;
+  }
+
+  ul {
+    // height: calc(100% - #{$headerHeight});
+    overflow-y: auto;
+    padding-left: $padding;
+
+    li {
+      background-color: $primary;
+      @include paddingBox;
+
+      &:nth-child(even) {
+        background-color: transparent;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      a {
+        color: $white;
+      }
+    }
+  }
+}

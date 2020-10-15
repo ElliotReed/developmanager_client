@@ -1,0 +1,23 @@
+@import "../../../styles/base";
+
+.button {
+  @include border($color: $primary);
+  margin: $margin 0;
+  @include paddingBox;
+  @include gradient($primary);
+  color: $white;
+
+  &:hover {
+    background: darken($primary, 38);
+    cursor: pointer;
+  }
+
+  &:disabled {
+    visibility: hidden;
+  }
+
+  &:active {
+    // border-bottom: 5px solid transparent;
+    transform: translateY(-3px);
+  }
+}

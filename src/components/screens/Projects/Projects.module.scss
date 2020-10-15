@@ -1,0 +1,14 @@
+@import "../../../styles/base";
+
+.manager {
+  display: grid;
+  grid-template-columns: 1fr 1.618fr;
+  padding: $padding;
+  height: 100%;
+}
+
+@media screen and (min-width: $desktop) {
+  .manager {
+    grid-template-columns: 1fr 1.618fr 1.618fr;
+  }
+}

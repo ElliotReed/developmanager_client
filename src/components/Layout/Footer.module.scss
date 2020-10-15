@@ -1,0 +1,36 @@
+@import "../../styles/base";
+
+.footer {
+  color: $neutral;
+  padding: $padding;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.attribution {
+  margin-top: $margin;
+}
+
+.webAuthor {
+  text-align: center;
+}
+
+@media screen and (min-width: $tablet) {
+  .container {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .attribution {
+    margin-top: 0;
+  }
+
+  .web-author {
+    text-align: right;
+  }
+}

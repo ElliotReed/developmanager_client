@@ -1,0 +1,47 @@
+@import "../../../styles/base";
+
+.Project {
+  form {
+    // border: 1px solid $neutral;
+    padding: $padding;
+    width: 100%;
+    color: $white;
+    grid-column: 2/4;
+
+    p {
+      font-size: 1rem / $goldenRatio;
+      color: $neutral;
+
+      & span {
+        margin-left: $margin;
+      }
+    }
+
+    label {
+      text-transform: capitalize;
+      display: block;
+    }
+
+    input {
+      margin-bottom: $margin;
+      width: 100%;
+      display: block;
+      color: $black;
+      @include paddingBox;
+
+      &[type="checkbox"] {
+        display: inline-block;
+        margin-left: $margin / $goldenRatio;
+        width: initial;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:disabled {
+        visibility: hidden;
+      }
+    }
+  }
+}
