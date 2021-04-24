@@ -1,4 +1,4 @@
-@import "../../styles/base.scss";
+@import "../../styles";
 
 .userMenu {
   // filler
@@ -112,18 +112,4 @@
   font-size: 0.725rem;
   text-align: center;
   cursor: pointer;
-}
-
-.signin {
-  padding: $padding * 0.618 $padding;
-  font-size: 0.725rem;
-  color: $white;
-
-  & a {
-    color: $white;
-    text-decoration: underline;
-  }
-  & span {
-    margin: 0 $margin * 0.38;
-  }
 }

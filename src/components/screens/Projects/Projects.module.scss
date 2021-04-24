@@ -1,10 +1,10 @@
-@import "../../../styles/base";
+@import "styles";
 
 .manager {
   display: grid;
   grid-template-columns: 1fr 1.618fr;
-  padding: $padding;
   height: 100%;
+  padding: $padding;
 }
 
 @media screen and (min-width: $desktop) {

@@ -1,0 +1,64 @@
+@import "../../../styles/";
+
+.AddEdit {
+  width: 100%;
+  color: $text_light;
+  min-width: 38vw;
+
+  p {
+    font-size: $goldenPercent;
+    color: $neutral;
+
+    & span {
+      margin-left: $margin;
+    }
+  }
+
+  header {
+    background-color: $primary;
+    padding: $padding;
+    padding-top: $padding * 2.62;
+    font-size: $goldenPercent;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  main {
+    padding: $padding;
+
+    label {
+      text-transform: capitalize;
+      display: block;
+
+      input {
+        margin-bottom: $margin;
+        width: 100%;
+        display: block;
+        color: $black;
+        @include paddingBox;
+
+        &[type="checkbox"] {
+          display: inline-block;
+          margin-left: $margin / $goldenRatio;
+          width: initial;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &:disabled {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: $border;
+  }
+}

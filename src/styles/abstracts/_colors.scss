@@ -1,0 +1,20 @@
+/* colors, sass */
+$black: #222222;
+$white: invert($black);
+$neutral: mix($black, $white, 25);
+$gray: mix($black, $white, 25);
+$darkGray: invert($gray);
+$primary: #556655;
+$primaryLight: #6c826c;
+$secondary: #2c2c2c;
+$tertiary: #e4ddcd;
+$triadic: #665555;
+$triadic2: #555566;
+$tetradic: #665e55;
+
+$text_dark: #2c2c2c;
+$text_light: $white;
+
+$errorColor: #662222;
+$warningColor: #e2e263;
+$successColor: #556655;

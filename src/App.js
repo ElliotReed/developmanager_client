@@ -1,97 +1,50 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
-import Auth from "components/screens/Auth";
-import Dashboard from "components/screens/Dashboard";
 import Layout from "components/Layout";
-import Projects from "components/screens/Projects";
-import Project from "components/screens/Projects//Project";
-import ProtectedRoute from "./components/shared/ProtectedRoute";
-// import PrivateRoute from "./components/shared/PrivateRoute";
+import RouterConfig from "navigation/RouterConfig";
+import PublicRouterConfig from "navigation/PublicRouterConfig";
 
-import AuthService from 'services/AuthService'
-import "utils/fontawesome";
+import AuthService from "services/authService/AuthService";
 
-// import { userContext } from "./user-context";
-
-function App() {
-  // const [user, setUser] = React.useState({
-  //   accessToken: "",
-  //   isAuthenticated: false,
-  // });
-
-  // function logout() {
-  //   const response = api.postLogout();
-  //   if (response) {
-  //     // setUser({ accessToken: "", isAuthenticated: false });
-  //   }
-  // }
+export default function App({ isAuthenticated, setIsAuthenticated }) {
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const initialize = async () => {
-    AuthService.initializeTokens().then((data) => {
-      const accessToken = data.token;
-      if (accessToken) {
-        AuthService.setAccessToken(accessToken);
-        // setUser({ accessToken: accessToken, isAuthenticated: true });
-      }
-    }).catch((err) => {
-      console.log(err)
-    })
+    AuthService.initializeTokens()
+      .then((statusText) => {
+        if (statusText === "OK") {
+          console.log("statusText: ", statusText);
+          setIsAuthenticated(true);
+          // TODO redirect on refresh?
+          // setShouldRedirect(true);
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setIsAuthenticated(false);
+        console.log("isAuthenticated error: ", isAuthenticated);
+      });
   };
 
-  function getAuth() {
-    console.log("AuthService.isAuthenticated(): ", AuthService.isAuthenticated());
-  }
-
   useEffect(() => {
-    // console.log("userContext: ", userContext);
     initialize();
   }, []);
 
-  React.useEffect(() => {
-    getAuth();
-  });
-
-  // const value = {
-  //   user: user,
-  //   logoutUser: logout,
-  //   setUser: setUser,
-  // };
-
   return (
     <Router>
-      {/* <userContext.Provider value={value}> */}
-      <Layout>
-        <Switch>
-          <ProtectedRoute
-            path="/projects/:projectId"
-            children={({ match }) => (
-              <Projects>
-                <Project match={match} />
-              </Projects>
-            )}
-          ></ProtectedRoute>
-          {/* <PrivateRoute
-              path="/projects/:projectId"
-              children={({ match }) => (
-                <Projects>
-                  <Project match={match} />
-                </Projects>
-              )}
-            ></PrivateRoute> */}
-          <ProtectedRoute path="/projects" component={Projects} />
-          {/* <PrivateRoute path="/projects" component={Projects} /> */}
-          <Route path="/auth">
-            <Auth />
-            {/* <Auth value={value} /> */}
-          </Route>
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/" render={() => <div>404</div>} />
-        </Switch>
-      </Layout>
-      {/* </userContext.Provider> */}
+      {shouldRedirect && <Redirect to="/dashboard" />}
+      {!isAuthenticated ? (
+        <Redirect to="/" /> && (
+          <Layout>
+            <PublicRouterConfig />
+          </Layout>
+        )
+      ) : (
+        <Layout>
+          <RouterConfig />
+        </Layout>
+      )}
     </Router>
   );
 }
-
-export default App;

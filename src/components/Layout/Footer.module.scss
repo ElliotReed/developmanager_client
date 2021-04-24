@@ -1,8 +1,8 @@
-@import "../../styles/base";
+@import "styles";
 
 .footer {
   color: $neutral;
-  padding: $padding;
+  @include paddingBox;
 }
 
 .container {
@@ -13,9 +13,11 @@
 
 .attribution {
   margin-top: $margin;
+  display: flex;
 }
 
 .webAuthor {
+  margin: 0 1rem;
   text-align: center;
 }
 

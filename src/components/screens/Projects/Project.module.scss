@@ -1,47 +1,35 @@
-@import "../../../styles/base";
+@import "styles";
 
-.Project {
-  form {
-    // border: 1px solid $neutral;
-    padding: $padding;
-    width: 100%;
-    color: $white;
-    grid-column: 2/4;
+.project {
+  padding: $padding;
+  width: 100%;
+  color: $white;
+  grid-column: 2/4;
 
-    p {
-      font-size: 1rem / $goldenRatio;
-      color: $neutral;
+  h2 {
+    margin: 0;
+  }
 
-      & span {
-        margin-left: $margin;
-      }
+  p {
+    font-size: $goldenPercent;
+    color: $neutral;
+
+    & span {
+      margin-left: $margin;
     }
+  }
+}
 
-    label {
-      text-transform: capitalize;
-      display: block;
-    }
+.inactive {
+  color: $neutral;
+}
 
-    input {
-      margin-bottom: $margin;
-      width: 100%;
-      display: block;
-      color: $black;
-      @include paddingBox;
+.status {
+  font-size: $goldenPercent;
+  color: $white;
 
-      &[type="checkbox"] {
-        display: inline-block;
-        margin-left: $margin / $goldenRatio;
-        width: initial;
-      }
-
-      &:focus {
-        outline: none;
-      }
-
-      &:disabled {
-        visibility: hidden;
-      }
-    }
+  & span {
+    margin-left: $margin;
+    color: $successColor;
   }
 }

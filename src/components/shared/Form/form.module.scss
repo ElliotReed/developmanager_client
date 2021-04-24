@@ -1,15 +1,69 @@
-@import "../../../base";
+@import "styles";
 
-.form {
-  & h3 {
+.Form {
+  width: 100%;
+  color: $text_light;
+  min-width: 38vw;
+}
+
+.FormHeader {
+    background-color: $primary;
+    padding: $padding;
+    padding-top: $padding * 2.62;
+    font-size: $goldenPercent;
+
+
+  .title {
+    margin: 0;
     text-transform: capitalize;
   }
-  & input {
-    color: $black;
-    // outline: $primary solid .062rem;
-    &:focus {
-      outline: none;
-      box-shadow: 1px 1px 1px $primary, -1px -1px 1px $primary;
-    }
-  }
 }
+
+.FormBody {
+    padding: $padding;
+
+    label {
+      text-transform: capitalize;
+      display: block;
+
+      input {
+        margin-bottom: $margin;
+        width: 100%;
+        display: block;
+        color: $black;
+        @include paddingBox;
+
+        &[type="checkbox"] {
+          display: inline-block;
+          margin-left: $margin / $goldenRatio;
+          width: initial;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        &:disabled {
+          visibility: hidden;
+        }
+      }
+    }
+}
+
+.FormFooter {
+    display: flex;
+    justify-content: flex-end;
+    border-top: $border;
+    flex-wrap: wrap;
+  }
+
+
+
+
+
+
+
+
+
+
+
