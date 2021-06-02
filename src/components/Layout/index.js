@@ -3,7 +3,7 @@ import config from "../../config/config.json";
 import Header from "./Header";
 import Footer from "./Footer";
 import MobileMenu from "./MobileMenu";
-import MainPageWrapper from "../shared/MainPageWrapper";
+import MainPageWrapper from "../common/MainPageWrapper";
 import style from "./Layout.module.scss";
 
 const Layout = ({ children }) => {

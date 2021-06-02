@@ -1,7 +1,7 @@
 import ProjectService from "services/ProjectService";
 
-import Button from "components/shared/Button";
-import Form from "components/shared/Form";
+import Button from "components/common/Button";
+import Form from "components/common/Form";
 
 export default function DeleteProject({
   closeDeleteModal,

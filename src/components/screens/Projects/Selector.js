@@ -2,11 +2,11 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AddProject from "./AddProject";
-import Modal from "components/shared/Modal";
+import Modal from "components/common/Modal";
 
-import LoadingSpinner from "components/shared/LoadingSpinner";
-import Toolbar from "components/shared/Toolbar";
-import ToolbarButton from "components/shared/Button/ToolbarButton";
+import LoadingSpinner from "components/common/LoadingSpinner";
+import Toolbar from "components/common/Toolbar";
+import ToolbarButton from "components/common/Button/ToolbarButton";
 import styles from "./Selector.module.scss";
 
 export default function Selector({ projects = [], loading, addToProjects }) {

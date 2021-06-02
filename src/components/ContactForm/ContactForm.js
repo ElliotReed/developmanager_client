@@ -1,26 +1,26 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
-import LoadingSpinner from "../shared/LoadingSpinner"
-import styles from "./ContactForm.module.scss"
+import LoadingSpinner from "../common/LoadingSpinner";
+import styles from "./ContactForm.module.scss";
 
 const ContactForm = ({ type }) => {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
-  const [submitted, setSubmitted] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   async function handleSubmit(e) {
-    setSubmitted(true)
-    e.preventDefault()
+    setSubmitted(true);
+    e.preventDefault();
     const response = await sendEmail("https://keithbkelly.com/email/contact", {
       name: name,
       email: email,
       message: message,
-    })
+    });
 
     if (response.mail === "success") {
-      setSuccess(true)
+      setSuccess(true);
     }
   }
 
@@ -31,8 +31,8 @@ const ContactForm = ({ type }) => {
         "Content-Type": "application/json; charset=utf-8",
       },
       body: JSON.stringify(data),
-    })
-    return await response.json()
+    });
+    return await response.json();
   }
 
   return (
@@ -57,7 +57,7 @@ const ContactForm = ({ type }) => {
                 name="name"
                 id="name"
                 value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
             </label>
@@ -68,7 +68,7 @@ const ContactForm = ({ type }) => {
                 name="email"
                 id="email"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </label>
@@ -79,7 +79,7 @@ const ContactForm = ({ type }) => {
                 name="message"
                 id="message"
                 value={message}
-                onChange={e => setMessage(e.target.value)}
+                onChange={(e) => setMessage(e.target.value)}
                 required
               />
             </label>
@@ -88,7 +88,7 @@ const ContactForm = ({ type }) => {
         </>
       )}
     </section>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;

@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import classnames from "classnames";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import LoadingSpinner from "components/shared/LoadingSpinner";
+import LoadingSpinner from "components/common/LoadingSpinner";
 
 import styles from "./user-menu.module.scss";
 

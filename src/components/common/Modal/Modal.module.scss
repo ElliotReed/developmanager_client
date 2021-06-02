@@ -1,4 +1,4 @@
-@import "../../../styles";
+@import "styles";
 
 .Modal {
   position: fixed;
@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   // padding: 1.5em 1em;
-  z-index: 999999;
+  z-index: 500;
   box-sizing: border-box;
 
   &.fade {
@@ -61,11 +61,12 @@
     z-index: 2;
     position: relative;
     margin: 0 auto;
+    box-shadow: 0 0 0.76rem 0.38rem rgba($black, 0.68);
+    border: 3px solid scale-color($black, $lightness: 3%);
+    max-height: 100%;
     background-color: $black;
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 100%;
-    border: 1px solid $neutral;
   }
 
   .bar__top {

@@ -1,18 +1,37 @@
-import React, { useState, useEffect, useRef } from "react";
-import Moment from "react-moment";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classnames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState, useEffect, useRef } from "react";
 
 import ProjectService from "services/ProjectService.js";
-import Toolbar from "components/shared/Toolbar";
-import ToolbarButton from "components/shared/Button/ToolbarButton";
-import Modal from "components/shared/Modal";
-import EditProject from "./EditProject";
+
+import DateDisplay from "components/common/datetime/DateDisplay";
 import DeleteProject from "./DeleteProject";
+import EditProject from "./EditProject";
+import Modal from "components/common/Modal";
+import Task from "components/Task";
+import Toolbar from "components/common/Toolbar";
+import ToolbarButton from "components/common/Button/ToolbarButton";
 
 import styles from "./Project.module.scss";
 
-const dateFormat = "dddd, MMMM Do, YYYY";
+function ProjectHistory({ project }) {
+  return (
+    <div className={styles.history}>
+      <p>
+        created:
+        <span>
+          <DateDisplay>{project.createdAt}</DateDisplay>
+        </span>
+      </p>
+      <p>
+        last update:
+        <span>
+          <DateDisplay>{project.updatedAt}</DateDisplay>
+        </span>
+      </p>
+    </div>
+  );
+}
 
 const ProjectStatus = ({ isArchived }) => {
   return (
@@ -70,18 +89,8 @@ export default function Project({ match, updateProjects, deleteProject }) {
             </ToolbarButton>
           </Toolbar>
           <ProjectStatus isArchived={project.archive} />
-          <p>
-            created:
-            <span>
-              <Moment format={dateFormat}>{project.createdAt}</Moment>
-            </span>
-          </p>
-          <p>
-            last update:
-            <span>
-              <Moment format={dateFormat}>{project.updatedAt}</Moment>
-            </span>
-          </p>
+          <ProjectHistory project={project} />
+          <Task foreignId={project.id} />
           <Modal ref={modal} fade={true}>
             <EditProject
               project={project}

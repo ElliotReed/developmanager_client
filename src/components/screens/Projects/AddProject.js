@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import Form from "components/shared/Form";
-import Button from "components/shared/Button";
-
 import ProjectService from "services/ProjectService";
+
+import Button from "components/common/Button";
 import Fields from "./ProjectFormFields";
+import Form from "components/common/Form";
 
 const AddProject = ({ closeModal, addToProjects }) => {
   const [dirty, setDirty] = useState(false);

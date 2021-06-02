@@ -39,6 +39,15 @@ class AuthService {
       throw error;
     }
   }
+
+  async postNewUser(newUser) {
+    try {
+      const response = await axiosInstance.post("auth/register", newUser);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default new AuthService();

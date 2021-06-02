@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Form from "components/shared/Form";
-import Button from "components/shared/Button";
+import Form from "components/common/Form";
+import Button from "components/common/Button";
 
 import ProjectService from "services/ProjectService";
 import Fields from "./ProjectFormFields";

@@ -12,7 +12,7 @@
   border-width: $width;
   border-color: $color;
   border-style: $style;
-  border-radius: 1rem / $goldenRatio / $goldenRatio / $goldenRatio;
+  border-radius: 1rem * $goldenRatioDecrease * $goldenRatioDecrease * $goldenRatioDecrease;
 }
 
 @mixin borderTest() {
@@ -36,7 +36,7 @@
 }
 
 @mixin paddingBox {
-  padding: ($padding / $goldenRatio) $padding;
+  padding: ($padding * $goldenRatioDecrease) $padding;
 }
 
 /* 

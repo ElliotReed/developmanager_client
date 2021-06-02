@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-import MaxWidthContainer from "../shared/MaxWidthContainer";
-import CurrentTime from "../shared/CurrentTime/";
-// import SocialLinks from '../shared/SocialLinks';
+import MaxWidthContainer from "../common/MaxWidthContainer";
+import CurrentTime from "../common/datetime/CurrentTime";
+// import SocialLinks from '../common/SocialLinks';
 import styles from "./Footer.module.scss";
 
 export default function Footer({ siteTitle }) {
@@ -22,7 +22,7 @@ export default function Footer({ siteTitle }) {
               </cite>
             </div>
           </section>
-          <CurrentTime />
+          <CurrentTime updateBy="minute" />
         </div>
       </MaxWidthContainer>
     </footer>

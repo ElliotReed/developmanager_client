@@ -1,6 +1,9 @@
 @import "styles";
 
 .project {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   padding: $padding;
   width: 100%;
   color: $white;
@@ -31,5 +34,18 @@
   & span {
     margin-left: $margin;
     color: $successColor;
+    font-weight: bold;
+  }
+}
+
+.history {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    // color: $successColor;
+    span {
+      display: inline-block;
+    }
   }
 }

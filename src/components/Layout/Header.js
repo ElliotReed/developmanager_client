@@ -1,7 +1,7 @@
 import React from "react";
 
 import Nav from "./Nav";
-import Logo from "../shared/Logo/";
+import Logo from "../common/Logo/";
 
 import styles from "./Header.module.scss";
 

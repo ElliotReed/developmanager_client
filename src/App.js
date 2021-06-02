@@ -14,7 +14,7 @@ export default function App({ isAuthenticated, setIsAuthenticated }) {
     AuthService.initializeTokens()
       .then((statusText) => {
         if (statusText === "OK") {
-          console.log("statusText: ", statusText);
+          // console.log("statusText: ", statusText);
           setIsAuthenticated(true);
           // TODO redirect on refresh?
           // setShouldRedirect(true);

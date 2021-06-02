@@ -9,7 +9,7 @@ export default function LoginRegister() {
       <div>
         <Link to="/auth/signin">Sign In</Link>
         <span>or</span>
-        <Link to="/auth/create-account">Create Account</Link>
+        <Link to="/create-account">Create Account</Link>
       </div>
     </div>
   );

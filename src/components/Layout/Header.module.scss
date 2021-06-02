@@ -1,10 +1,10 @@
-@import "../../styles";
+@import "styles";
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: (1rem / $goldenRatio) (1.618rem / $goldenRatio);
+  padding: (1rem * $goldenRatioDecrease) (1.618rem * $goldenRatioDecrease);
   position: relative;
   line-height: 0;
   background-color: $primary;

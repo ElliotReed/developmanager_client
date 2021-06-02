@@ -1,9 +1,9 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
-import Button from "components/shared/Button";
-import LoadingSpinner from "components/shared/LoadingSpinner";
-import MaxWidthContainer from "components/shared/MaxWidthContainer";
+import Button from "components/common/Button";
+import LoadingSpinner from "components/common/LoadingSpinner";
+import MaxWidthContainer from "components/common/MaxWidthContainer";
 
 import styles from "./auth.module.scss";
 
