@@ -24,6 +24,40 @@
     0px 8px 8px rgba($color, 0.32), 0px 16px 16px rgba($color, 0.32);
 }
 
+@mixin button($bg-color: $primary, $text-color: $text_light) {
+  @include border($color: $primary);
+  margin: $margin;
+  @include paddingBox;
+  color: $text-color;
+  // font-weight: 600;
+  background-color: $bg-color;
+  outline: none;
+
+  &:hover:enabled {
+    @include gradient(scale-color($primary, $lightness: 10%));
+    cursor: pointer;
+  }
+
+  &:disabled {
+    $disabledColor: scale-color($text_light, $lightness: -38%);
+    color: $disabledColor;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: 1px solid invert($primary);
+  }
+
+  &:active {
+    transition: all 0.15s;
+    transform: scale(0.9, 0.9);
+  }
+
+  &.primary {
+    @include gradient($primary);
+  }
+}
+
 @mixin gradient($color) {
   background-image: linear-gradient(
     173deg,

@@ -1,4 +1,4 @@
-@import "../../../styles";
+@import "styles";
 
 .button {
   @include border($color: $primary);
@@ -28,6 +28,6 @@
   }
 
   &.primary {
-  @include gradient($primary);
+    @include gradient($primary);
   }
 }

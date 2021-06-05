@@ -10,7 +10,7 @@ export default function CurrentDateTime({ updateBy = "second" }) {
     if (updateBy === "minute") {
       setUpdateInterval(updateInterval * 60);
     }
-  });
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {

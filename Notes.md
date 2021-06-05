@@ -2,20 +2,6 @@
 
 ![developManager](/public/icons/icon-72x72.png)
 
-## Sign in
-
-    {
-      "email": "elliot_devs@elliotreed.net",
-      "password": "3llington"
-    }
-
-    {
-      "email": "elliot@elliotreed.net",
-      "password": "3llington"
-    }
-
----
-
 ## Deployment
 
     run "build" command

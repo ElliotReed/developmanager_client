@@ -13,10 +13,13 @@ import {
   IsAuthenticatedContextConsumer,
 } from "services/authService/IsAuthenticatedContext";
 
+import AppProviders from "./context";
+
 const root = document.getElementById("develop-manager");
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <AppProviders> */}
     <IsAuthenticatedContextProvider>
       <IsAuthenticatedContextConsumer>
         {(context) => (
@@ -27,6 +30,7 @@ ReactDOM.render(
         )}
       </IsAuthenticatedContextConsumer>
     </IsAuthenticatedContextProvider>
+    {/* </AppProviders> */}
   </React.StrictMode>,
   root
 );
