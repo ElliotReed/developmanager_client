@@ -7,7 +7,7 @@ export default function LoginRegister() {
   return (
     <div className={styles.LoginRegister}>
       <div>
-        <Link to="/auth/signin">Sign In</Link>
+        <Link to="/sign-in">Sign In</Link>
         <span>or</span>
         <Link to="/create-account">Create Account</Link>
       </div>

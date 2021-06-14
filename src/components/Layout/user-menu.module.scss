@@ -37,7 +37,6 @@
   width: 1.618rem;
   border: none;
   background: transparent;
-  padding: $padding * 0.618 0;
   color: $white;
 
   &:hover {
@@ -98,6 +97,7 @@
 .user {
   padding: 0 $padding;
   cursor: default;
+  text-align: center;
   & .email {
     margin: $margin 0;
     font-size: 0.725rem;

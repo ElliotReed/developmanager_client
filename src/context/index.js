@@ -1,16 +1,14 @@
-import * as React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider } from "./auth-context";
-import { UserProvider } from "./user-context";
 
-function AppProviders({ children }) {
+import { AxiosProvider } from "libs/authentication/axios/useAxios";
+import { AuthProvider } from "libs/authentication/useAuth.js";
+
+export default function AppProviders({ children }) {
   return (
     <Router>
-      <AuthProvider>
-        <UserProvider>{children}</UserProvider>
-      </AuthProvider>
+      <AxiosProvider>
+        <AuthProvider>{children}</AuthProvider>
+      </AxiosProvider>
     </Router>
   );
 }
-
-export default { AppProviders };

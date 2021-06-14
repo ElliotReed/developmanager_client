@@ -3,5 +3,5 @@
     "baseUrl": "src"
   },
   "exclude": [".archive", "node_modules", "dist"],
-  "include": ["src"]
+  "include": ["src", ".archive/ProtectedRoute", ".archive/PrivateRoute"]
 }
