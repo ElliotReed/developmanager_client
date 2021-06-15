@@ -1,22 +1,16 @@
-import React from "react";
+import { useAuth } from "libs/authentication/useAuth";
 
+import Logo from "components/common/Logo/";
+import LoginRegister from "./LoginRegister";
 import Nav from "./Nav";
-import Logo from "../common/Logo/";
+import NavPublic from "./NavPublic";
+import UserMenu from "./UserMenu";
 
 import styles from "./Header.module.scss";
 
-import LoginRegister from "./LoginRegister";
-import UserMenu from "./UserMenu";
+const Header = ({ siteTitle, isActive, setIsActive }) => {
+  const auth = useAuth();
 
-import { IsAuthenticatedContextConsumer } from "services/authService/IsAuthenticatedContext";
-
-const Header = ({
-  siteTitle,
-  isActive,
-  setIsActive,
-  // isAuthenticated,
-  // setIsAuthenticated,
-}) => {
   let hamburgerStyle = `${styles.hamburger} ${styles.hamburgerSqueeze} ${
     isActive ? styles.isActive : ""
   }`;
@@ -25,12 +19,8 @@ const Header = ({
     <header className={styles.header}>
       <Logo siteTitle={siteTitle} />
       <div className={styles.mainNavWrapper}>
-        <Nav />
-        <IsAuthenticatedContextConsumer>
-          {(context) =>
-            context.isAuthenticated ? <UserMenu /> : <LoginRegister />
-          }
-        </IsAuthenticatedContextConsumer>
+        {auth.user ? <Nav /> : <NavPublic />}
+        {auth.user ? <UserMenu /> : <LoginRegister />}
       </div>
       <button
         className={hamburgerStyle}

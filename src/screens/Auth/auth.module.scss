@@ -2,8 +2,10 @@
 
 .Auth {
   padding: $padding;
-  .form {
+  form {
     padding: 4rem 0;
+    display: grid;
+    place-content: center;
 
     label {
       text-transform: capitalize;
@@ -11,9 +13,7 @@
     }
 
     input {
-      user-select: auto;
       margin-bottom: $margin;
-      width: 100%;
       display: block;
       color: $black;
       @include paddingBox;
@@ -23,6 +23,17 @@
         display: inline-block;
         margin-left: $margin * $goldenRatioDecrease;
         width: initial;
+      }
+
+      &:not([type="submit"]) {
+        min-width: 25rem;
+        user-select: auto;
+      }
+
+      &[type="submit"] {
+        @include button();
+        margin-left: 0;
+        margin-right: 0;
       }
 
       &:focus {

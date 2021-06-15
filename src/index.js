@@ -8,29 +8,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./utils/fontawesome";
 import "./styles/main.scss";
 
-import {
-  IsAuthenticatedContextProvider,
-  IsAuthenticatedContextConsumer,
-} from "services/authService/IsAuthenticatedContext";
-
 import AppProviders from "./context";
 
 const root = document.getElementById("develop-manager");
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <AppProviders> */}
-    <IsAuthenticatedContextProvider>
-      <IsAuthenticatedContextConsumer>
-        {(context) => (
-          <App
-            isAuthenticated={context.isAuthenticated}
-            setIsAuthenticated={context.setIsAuthenticated}
-          />
-        )}
-      </IsAuthenticatedContextConsumer>
-    </IsAuthenticatedContextProvider>
-    {/* </AppProviders> */}
+    <AppProviders>
+      <App />
+    </AppProviders>
   </React.StrictMode>,
   root
 );

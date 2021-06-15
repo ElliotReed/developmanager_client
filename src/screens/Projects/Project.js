@@ -20,7 +20,7 @@ function ProjectHistory({ project }) {
       <p>
         created:
         <span>
-          <DateDisplay>{project.createdAt}</DateDisplay>
+          <DateDisplay>{project ? project.createdAt : ""}</DateDisplay>
         </span>
       </p>
       <p>

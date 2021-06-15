@@ -10,7 +10,8 @@ export default function CurrentDateTime({ updateBy = "second" }) {
     if (updateBy === "minute") {
       setUpdateInterval(updateInterval * 60);
     }
-  }, []);
+    // eslint-disable-next-line
+  }, [updateBy]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -20,7 +21,7 @@ export default function CurrentDateTime({ updateBy = "second" }) {
     return () => {
       clearInterval(timer);
     };
-  }, [time, updateInterval]);
+  }, [updateInterval]);
 
   return <DateDisplay options={options}>{time}</DateDisplay>;
 }

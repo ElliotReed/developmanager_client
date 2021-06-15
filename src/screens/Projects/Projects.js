@@ -1,51 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import Selector from "./Selector";
 import Project from "./Project";
 
+import useProjects from "./useProjects";
+
 import styles from "./Projects.module.scss";
 
-import ProjectService from "services/ProjectService.js";
-
-export default function Projects({ match, children }) {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(false);
-  let history = useHistory();
-
-  // TODO add sorting function LODASH?
-  const addToProjects = (newProject) => {
-    const newProjectList = [...projects, newProject];
-    newProjectList.sort((a, b) => (a.name > b.name ? 1 : -1));
-    setProjects(newProjectList);
-    history.push(`/projects/${newProject.id}`);
-  };
-
-  const updateProjects = (updatedProject) => {
-    const filteredList = projects.filter(
-      (project) => project.id !== updatedProject.id
-    );
-    setProjects([...filteredList, updatedProject]);
-  };
-
-  const deleteProject = (projectId) => {
-    history.push("/projects");
-    const filteredList = projects.filter((project) => project.id !== projectId);
-    setProjects(filteredList);
-  };
-
-  useEffect(() => {
-    setLoading(true);
-    ProjectService.getProjects()
-      .then((data) => {
-        setProjects(data);
-      })
-      .catch((err) => {
-        if (err.status === 403) {
-          console.log(err);
-        }
-      });
-    setLoading(false);
-  }, []);
+export default function Projects({ match }) {
+  const { projects, addToProjects, updateProjects, deleteProject, loading } =
+    useProjects();
 
   return (
     <div className={styles.manager}>
@@ -60,7 +22,6 @@ export default function Projects({ match, children }) {
         updateProjects={updateProjects}
         deleteProject={deleteProject}
       />
-      {children}
     </div>
   );
 }
