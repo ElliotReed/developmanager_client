@@ -20,7 +20,7 @@ export default function Welcome() {
           </p>
         </div>
         <footer>
-          <NavLink to="/auth">Sign In</NavLink>
+          <NavLink to="/sign-in">Sign In</NavLink>
           <NavLink to="/create-account">Create Account</NavLink>
         </footer>
       </div>

@@ -5,7 +5,7 @@ import MaxWidthContainer from "components/common/MaxWidthContainer";
 
 import styles from "./auth.module.scss";
 
-const Auth = ({ mode }) => {
+export default function Auth({ mode }) {
   const modeText =
     mode === "login" ? `please sign in to use this app` : "create your account";
   return (
@@ -17,5 +17,3 @@ const Auth = ({ mode }) => {
     </div>
   );
 };
-
-export default Auth;

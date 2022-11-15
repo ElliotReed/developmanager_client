@@ -1,4 +1,4 @@
-@import "styles";
+@use "styles/abstracts";
 
 .loading_spinner-wrap {
   width: 100%;
@@ -8,7 +8,7 @@
 .loading_spinner {
   display: block;
   margin: 0 auto;
-  fill: $primary;
+  fill: abstracts.$primary;
 }
 
 .loading_spinner circle {
@@ -19,8 +19,8 @@
 }
 
 .loading_spinner circle:nth-child(2) {
-    animation-delay: 0.18s;
-  }
+  animation-delay: 0.18s;
+}
 
 .loading_spinner circle:nth-child(3) {
   animation-delay: 0.36s;
@@ -31,14 +31,17 @@
     opacity: 0;
     transform: translateY(0);
   }
+
   25% {
     opacity: 1;
     transform: translateY(-10px);
   }
+
   75% {
     opacity: 1;
     transform: translateY(-10px);
   }
+
   100% {
     opacity: 0;
     transform: translateY(0);

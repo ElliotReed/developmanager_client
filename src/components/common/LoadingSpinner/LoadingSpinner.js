@@ -1,5 +1,4 @@
-import React from "react"
-import style from "./loading-spinner.module.scss"
+import style from "./LoadingSpinner.module.scss"
 
 const LoadingSpinner = () => (
   <div className={style.loading_spinnerWrap}>
@@ -17,4 +16,4 @@ const LoadingSpinner = () => (
   </div>
 )
 
-export default LoadingSpinner
+export default LoadingSpinner;

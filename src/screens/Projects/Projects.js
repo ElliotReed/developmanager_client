@@ -1,5 +1,6 @@
 import Selector from "./Selector";
 import Project from "./Project";
+import { ScreenHeading } from 'components/common/Heading';
 
 import useProjects from "./useProjects";
 
@@ -11,11 +12,14 @@ export default function Projects({ match }) {
 
   return (
     <div className={styles.manager}>
+      <ScreenHeading>Projects</ScreenHeading>
+
       <Selector
         projects={projects}
         loading={loading}
         addToProjects={addToProjects}
       />
+
       <Project
         match={match}
         projects={projects}

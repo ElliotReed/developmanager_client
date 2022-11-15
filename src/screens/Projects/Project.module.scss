@@ -1,39 +1,40 @@
-@import "styles";
+@use "styles/abstracts";
 
 .project {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: $padding;
+  padding: 0 abstracts.$padding;
   width: 100%;
-  color: $white;
+  color: abstracts.$white;
   grid-column: 2/4;
+  overflow-y: auto;
 
   h2 {
-    margin: 0;
+    // margin: 0;
   }
 
   p {
-    font-size: $goldenPercent;
-    color: $neutral;
+    font-size: abstracts.$goldenPercent;
+    color: abstracts.$neutral;
 
     & span {
-      margin-left: $margin;
+      margin-left: abstracts.$margin;
     }
   }
 }
 
 .inactive {
-  color: $neutral;
+  color: abstracts.$neutral;
 }
 
 .status {
-  font-size: $goldenPercent;
-  color: $white;
+  font-size: abstracts.$goldenPercent;
+  color: abstracts.$white;
 
   & span {
-    margin-left: $margin;
-    color: $successColor;
+    margin-left: abstracts.$margin;
+    color: abstracts.$successColor;
     font-weight: bold;
   }
 }
@@ -43,6 +44,7 @@
   justify-content: space-between;
 
   p {
+
     // color: $successColor;
     span {
       display: inline-block;

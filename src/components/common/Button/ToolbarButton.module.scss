@@ -1,11 +1,11 @@
-@import "../../../styles/";
+@use "styles/abstracts";
 
 .bgColor {
   background: transparent;
-  @include border(transparent);
+  @include abstracts.border(transparent);
 
-   &:hover:enabled {
-  background: transparent;
-    color: $neutral;
+  &:hover:enabled {
+    background: transparent;
+    color: abstracts.$neutral;
   }
 }

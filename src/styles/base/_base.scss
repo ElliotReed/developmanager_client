@@ -1,5 +1,6 @@
-@import "../abstracts/variables";
-@import "../abstracts/mixins";
+@use "../abstracts";
+@use './typography';
+@use '../layouts';
 
 /* #region Variables */
 :root {
@@ -9,41 +10,22 @@
 
 html {
   box-sizing: border-box;
+  font-size: calc(.9375rem + 0.390625vw);
 }
 
-/* set default base size for deveice and reading distance */
-/* mobile */
-html {
-  font-size: 16px;
-}
-
-/* tablet */
-@media only screen and (min-width: 768px) {
-  html {
-    font-size: 18px;
-  }
-}
-
-/* desktop */
-@media only screen and (min-width: 1080px) {
-  html {
-    font-size: 22px;
-  }
-}
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
-  user-select: none;
 }
 
 body {
-  font-family: $fontStack;
+  font-family: typography.$fontStack;
   line-height: 1.618rem;
-  background-color: $black;
-  color: $neutral;
-  @include appFixedContainer;
+  background-color: abstracts.$black;
+  color: abstracts.$neutral;
+  // @include layouts.appFixedContainer;
 }
 
 html,
@@ -54,39 +36,9 @@ body {
   min-width: 320px;
 }
 
-h1 {
-  font-size: 2.075rem;
-  line-height: 3.334rem;
-}
-
-h2 {
-  font-size: 1.725rem;
-  line-height: 2.791rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-  line-height: 2.427rem;
-}
-
-h4 {
-  font-size: 1.25rem;
-  line-height: 2.023rem;
-}
-
-h5 {
-  font-size: 1.1rem;
-  line-height: 1.78rem;
-}
-
-h6 {
-  font-size: 1rem;
-  line-height: 1.618rem;
-}
-
 a {
   text-decoration: none;
-  color: $primary;
+  color: abstracts.color(primary, 200);
 }
 
 ul {

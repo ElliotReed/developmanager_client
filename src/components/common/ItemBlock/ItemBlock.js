@@ -1,6 +1,4 @@
-import React from "react"
-
-import MaxWidthContainer from "./MaxWidthContainer"
+import MaxWidthContainer from "../MaxWidthContainer"
 import style from "./item-block.module.scss"
 
 export default function ItemBlock({ children, color = "secondary" }) {

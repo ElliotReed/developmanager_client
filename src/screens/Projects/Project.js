@@ -1,12 +1,14 @@
-import classnames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classnames from "classnames";
 import { useState, useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 
 import ProjectService from "services/ProjectService.js";
 
 import DateDisplay from "components/common/datetime/DateDisplay";
 import DeleteProject from "./DeleteProject";
 import EditProject from "./EditProject";
+import Heading from "components/common/Heading";
 import Modal from "components/common/Modal";
 import Task from "components/Task";
 import Toolbar from "components/common/Toolbar";
@@ -20,13 +22,13 @@ function ProjectHistory({ project }) {
       <p>
         created:
         <span>
-          <DateDisplay>{project ? project.createdAt : ""}</DateDisplay>
+          <DateDisplay date={project?.createdAt} />
         </span>
       </p>
       <p>
         last update:
         <span>
-          <DateDisplay>{project.updatedAt}</DateDisplay>
+          <DateDisplay date={project?.updatedAt} />
         </span>
       </p>
     </div>
@@ -44,20 +46,24 @@ const ProjectStatus = ({ isArchived }) => {
   );
 };
 
-export default function Project({ match, updateProjects, deleteProject }) {
+export default function Project({ updateProjects, deleteProject }) {
   const initialState = {
     name: "",
     archive: false,
+    createdAt: false,
+    updatedAt: false,
   };
+
   const [project, setProject] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const modal = useRef(null);
   const deleteModal = useRef(null);
+  let params = useParams();
 
   useEffect(() => {
-    if (match.params.projectId) {
+    if (params.projectId) {
       setLoading(true);
-      ProjectService.getProjectById(match.params.projectId)
+      ProjectService.getProjectById(params.projectId)
         .then((data) => {
           setProject(data);
         })
@@ -66,17 +72,17 @@ export default function Project({ match, updateProjects, deleteProject }) {
         });
       setLoading(false);
     }
-  }, [match]);
+  }, [params]);
 
   return (
-    <div className={styles.project}>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <>
-          <h2 className={classnames(project.archive ? styles.inactive : "")}>
+    <>
+      {loading ? (<div>Loading...</div>) : null}
+
+      {project.name.length ? (
+        <div className={styles.project}>
+          <Heading level={2} className={classnames(project.archive ? styles.inactive : null)}>
             {project.name}
-          </h2>
+          </Heading>
           <Toolbar>
             <ToolbarButton title="Edit" onClick={() => modal.current.open()}>
               <FontAwesomeIcon icon={["fas", "edit"]} />
@@ -107,8 +113,8 @@ export default function Project({ match, updateProjects, deleteProject }) {
               deleteProject={deleteProject}
             />
           </Modal>
-        </>
-      )}
-    </div>
+        </div>
+      ) : null}
+    </>
   );
 }

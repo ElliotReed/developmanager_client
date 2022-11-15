@@ -1,60 +1,75 @@
-import * as React from "react";
-import classnames from "classnames";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import styles from "./user-menu.module.scss";
+import classnames from "classnames";
+import * as React from "react";
 
 import { useAuth } from "libs/authentication/useAuth";
+import { useOutsideClick } from "hooks/useOutsideClick";
 
-const UserMenu = () => {
+import styles from "./UserMenu.module.scss";
+
+export default function UserMenu() {
   const auth = useAuth();
-  const [displayMenu, setDisplayMenu] = React.useState(false);
+  const [shouldDisplayMenu, setShouldDisplayMenu] = React.useState(false);
 
-  React.useEffect(() => {
-    const hideUserMenu = () => {
-      setDisplayMenu(false);
-    };
+  const hideUserMenu = () => {
+    setShouldDisplayMenu(false);
+  };
 
-    if (displayMenu) {
-      window.addEventListener("click", hideUserMenu);
-    }
+  const ref = useOutsideClick(hideUserMenu);
 
-    return () => {
-      window.removeEventListener("click", hideUserMenu);
-    };
-  }, [displayMenu]);
-
-  const setDisplayMenuTrue = () => {
-    if (!displayMenu) {
-      setDisplayMenu(true);
-    }
+  const toggleDisplayMenu = () => {
+    setShouldDisplayMenu(prev => !prev);
   };
 
   return (
-    <div className={styles.userMenu}>
-      <div className={styles.logged}>
-        <button className={styles.icon} onClick={setDisplayMenuTrue}>
-          <FontAwesomeIcon icon={["fas", "user-circle"]} size="lg" />
-        </button>
-        <ul
-          className={
-            displayMenu ? classnames(styles.menu, styles.menuOpen) : styles.menu
-          }
-        >
-          <li className={styles.user}>
-            <div className={styles.email}>
-              <FontAwesomeIcon icon={["fas", "user-circle"]} size="2x" />{" "}
-              <p>{auth.user.email}</p>
-            </div>
-          </li>
-          <li className={styles.signout} onClick={auth.logout}>
-            <span>Sign Out</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <UserMenuWrapper>
+      <UserMenuToggle ref={ref} onClick={toggleDisplayMenu} />
+      <UserMenuList shouldDisplayMenu={shouldDisplayMenu}>
+        <UserEmail auth={auth} />
+        <UserSignOut auth={auth} />
+      </UserMenuList>
+    </UserMenuWrapper>
   );
 };
 
-export default UserMenu;
+const UserMenuToggle = React.forwardRef((props, ref) => (
+  <button ref={ref} className={styles.icon} onClick={props.onClick}>
+    <FontAwesomeIcon icon={["fas", "user-circle"]} size="lg" />
+  </button>
+));
+
+function UserMenuWrapper({ children }) {
+  return (
+    <div className={styles.userMenu}>
+      {children}
+    </div>
+  )
+}
+function UserMenuList({ shouldDisplayMenu, children }) {
+  return (
+    <ul
+      className={
+        shouldDisplayMenu ? classnames(styles.menu, styles.menuOpen) : styles.menu
+      }
+    >
+      {children}
+    </ul>
+  );
+}
+function UserSignOut({ auth }) {
+  return (
+    <li className={styles.signout} onClick={auth.logout}>
+      <span>Sign Out</span>
+    </li>
+  );
+}
+function UserEmail({ auth }) {
+  return (
+    <li className={styles.user}>
+      <div className={styles.email}>
+        <FontAwesomeIcon icon={["fas", "user-circle"]} size="2x" />{" "}
+        <p>{auth.user.email}</p>
+      </div>
+    </li>
+  );
+}

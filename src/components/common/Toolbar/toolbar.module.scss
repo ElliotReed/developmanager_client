@@ -1,10 +1,10 @@
-@import "styles";
+@use "styles/abstracts";
 
 .toolbar {
   // display: flex;
-  @include border();
-  background: scale-color($black, $lightness: 3%);
-  font-size: $goldenPercent;
+  @include abstracts.border();
+  background: scale-color(abstracts.$black, $lightness: 3%);
+  font-size: abstracts.$goldenPercent;
   // margin: $margin;
 
   button {

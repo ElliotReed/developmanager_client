@@ -1,35 +1,43 @@
-@import "../../styles";
+@use "styles/abstracts";
 
 .nav {
+  display: flex;
+  align-items: center;
+
   ul {
+    margin: 0;
     padding: 0;
+    display: flex;
+
     li {
-      text-align: end;
+      // text-align: end;
+
       a {
-        @include paddingBox;
-        display: block;
-        color: $white;
+        padding: abstracts.$space-sm abstracts.$space-xsm;
+        display: inline-block;
+        color: abstracts.$white;
       }
     }
   }
 }
 
-@media screen and (min-width: $tablet) {
+@media screen and (min-width: abstracts.$tablet) {
   .nav {
     ul {
       display: flex;
 
       li {
         a {
-          color: $white;
+          color: abstracts.$white;
           padding: 0;
-          margin-right: $margin;
+          margin-right: abstracts.$margin;
 
           &:hover {
-            color: lighten($white, 32);
+            color: lighten(abstracts.$white, 32);
           }
+
           &.active {
-            color: $neutral;
+            color: abstracts.$neutral;
           }
         }
       }

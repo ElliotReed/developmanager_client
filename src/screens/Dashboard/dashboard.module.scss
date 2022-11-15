@@ -1,5 +1,60 @@
-@import "styles";
+@use "styles/abstracts";
 
 .Dashboard {
-  padding: $padding;
+  display: flex;
+  flex-direction: column;
+  margin-inline: abstracts.$space-md;
+  max-height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.projectTasks {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow: hidden;
+
+  .listWrapper {
+    max-width: abstracts.$max-width;
+    padding: 0;
+    margin: 0;
+    color: abstracts.$white;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    @include abstracts.scrollbar;
+
+    li {
+      @include abstracts.paddingBox;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    li:nth-child(even) {
+      background-color: abstracts.color(black, 700);
+
+    }
+  }
+
+  .projectTaskListItem {
+    div {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      span {
+        font-size: abstracts.$fs-sm-em;
+        color: abstracts.$neutral;
+      }
+    }
+  }
+}
+
+.title {
+  font-size: abstracts.$fs-sm-em;
+  text-transform: uppercase;
+  line-height: 1;
 }

@@ -1,17 +1,17 @@
-@import "styles";
+@use "styles/abstracts";
 
 .task {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: $black;
-  color: $white;
-  padding: $padding;
+  background-color: abstracts.$black;
+  color: abstracts.$white;
+  // padding: abstracts.$padding;
 
   header {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: $margin;
+    gap: abstracts.$margin;
     align-items: center;
   }
 }

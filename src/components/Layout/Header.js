@@ -11,26 +11,25 @@ import styles from "./Header.module.scss";
 const Header = ({ siteTitle, isActive, setIsActive }) => {
   const auth = useAuth();
 
-  let hamburgerStyle = `${styles.hamburger} ${styles.hamburgerSqueeze} ${
-    isActive ? styles.isActive : ""
-  }`;
+  let hamburgerStyle = `${styles.hamburger} ${styles.hamburgerSqueeze} ${isActive ? styles.isActive : ""
+    }`;
 
   return (
     <header className={styles.header}>
-      <Logo siteTitle={siteTitle} />
+      <Logo siteTitle={siteTitle} smallDisplay={true} />
       <div className={styles.mainNavWrapper}>
         {auth.user ? <Nav /> : <NavPublic />}
         {auth.user ? <UserMenu /> : <LoginRegister />}
       </div>
-      <button
-        className={hamburgerStyle}
-        type="button"
-        onClick={() => setIsActive(!isActive)}
-      >
-        <span className={styles.hamburgerBox}>
-          <span className={styles.hamburgerInner}></span>
-        </span>
-      </button>
+      {/* <button
+      className={hamburgerStyle}
+      type="button"
+      onClick={() => setIsActive(!isActive)}
+    >
+      <span className={styles.hamburgerBox}>
+        <span className={styles.hamburgerInner}></span>
+      </span>
+    </button> */}
     </header>
   );
 };

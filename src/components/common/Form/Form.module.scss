@@ -1,50 +1,45 @@
-@import "styles";
+@use "styles/abstracts";
 
 .Form {
-  width: 100%;
-  color: $text_light;
-  min-width: 62vw;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-@media screen and (min-width: $desktop) {
-  .Form {
-    min-width: 38vw;
-  }
+  color: abstracts.$white;
 }
 
 .FormHeader {
-  background-color: $primary;
-  padding: $padding;
-  padding-top: $padding * 2.62;
-  font-size: $goldenPercent;
+  border: 1px solid transparent; // to prevent margin collapse
+  background-color: abstracts.$primary;
 
   .title {
-    margin: 0;
+    color: abstracts.$white;
+    line-height: 1;
+    font-size: abstracts.em-scale(600);
     text-transform: capitalize;
+    margin-block-start: abstracts.$space-lg;
+    margin-block-end: abstracts.$space-sm;
+    margin-inline: abstracts.$space-md;
   }
 }
 
 .FormBody {
-  padding: $padding;
 
+  // ! TODO: Switch to Input components to remove these styles
   label {
-    text-transform: capitalize;
     display: block;
+    text-transform: capitalize;
+    margin-inline: abstracts.$space-md;
+    margin-block-start: abstracts.$space-md;
 
     input,
     textarea {
-      margin-bottom: $margin;
-      width: 100%;
       display: block;
-      color: $black;
-      @include paddingBox;
+      width: 100%;
+      color: abstracts.$black;
+      margin-bottom: abstracts.$margin;
+      @include abstracts.paddingBox;
 
       &[type="checkbox"] {
         display: inline-block;
-        margin-left: $margin * $goldenRatioDecrease;
         width: initial;
+        margin-left: abstracts.$margin * abstracts.$goldenRatioDecrease;
       }
 
       &:focus {
@@ -60,7 +55,7 @@
 
 .FormFooter {
   display: flex;
-  justify-content: flex-end;
-  border-top: $border;
   flex-wrap: wrap;
+  justify-content: flex-end;
+  border-top: abstracts.$border;
 }

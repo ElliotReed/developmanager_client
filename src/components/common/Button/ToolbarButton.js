@@ -1,4 +1,3 @@
-import React from "react";
 import Button from './Button'
 
 import styles from "./ToolbarButton.module.scss";
@@ -9,7 +8,7 @@ export default function ToolbarButton({
   disabled = false,
   children,
   onClick,
-}) 
+})
 {
   return (
     <Button
@@ -24,4 +23,3 @@ export default function ToolbarButton({
   );
 };
 
-;

@@ -1,6 +1,6 @@
-@import '../../../base.scss';
+@use 'styles/abstracts';
 
 .error {
-  background-color: $danger;
-  @include paddingBox;
+  background-color: abstracts.color(state, error);
+  @include abstracts.paddingBox;
 }

@@ -1,19 +1,26 @@
-@import "styles";
+@use "styles/abstracts";
 
 .logo {
-  a {
-    font-size: 1em;
-    font-weight: 400;
-    color: $white;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 400;
+  color: abstracts.$white;
 
-    span {
-      color: $white;
+  .icon {
+    padding-right: abstracts.$space-xsm;
+  }
+
+  span {
+
+    &.smallDisplay {
+      display: none;
+
+      @include abstracts.respondTo(smartphone) {
+        display: inline-block;
+      }
     }
 
-    p {
-      display: inline;
-      margin: 0;
-      margin-left: $margin * $goldenRatioDecrease;
-    }
   }
 }

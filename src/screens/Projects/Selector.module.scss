@@ -1,4 +1,4 @@
-@import "styles";
+@use "styles/abstracts";
 
 .selector {
   display: flex;
@@ -6,23 +6,21 @@
   overflow: hidden;
 
   header {
-    color: $darkGray;
-
-    h2 {
-      margin: 0;
-      text-transform: capitalize;
-    }
+    color: abstracts.color(black, 200);
+    background: transparent;
+    text-transform: capitalize;
   }
 
   ul {
     margin: 0;
     padding: 0;
     overflow-y: auto;
+    @include abstracts.scrollbar;
 
     li {
       font-size: min(1rem, 18px);
-      background-color: $primary;
-      @include paddingBox;
+      background-color: abstracts.$primary;
+      @include abstracts.paddingBox;
 
       &:nth-child(even) {
         background-color: transparent;
@@ -34,7 +32,7 @@
 
       a {
         font-size: inherit;
-        color: $white;
+        color: abstracts.$white;
       }
     }
   }

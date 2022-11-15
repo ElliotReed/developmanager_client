@@ -1,13 +1,18 @@
-@import "styles";
+@use "styles/abstracts";
 
 .manager {
   display: grid;
   grid-template-columns: 1fr 1.618fr;
   height: 100%;
-  padding: $padding;
+
+  padding-inline: abstracts.$space-md;
+
+  nav {
+    grid-column: 1/2;
+  }
 }
 
-@media screen and (min-width: $desktop) {
+@media screen and (min-width: abstracts.$desktop) {
   .manager {
     grid-template-columns: 1fr 1.618fr 1.618fr;
   }

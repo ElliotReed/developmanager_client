@@ -56,7 +56,9 @@ export function Modal({ children, fade = false, defaultOpened = false }, ref) {
               <FontAwesomeIcon icon={["fas", "times"]} />
             </span>
           </div>
-          {children}
+          <div className={styles.childWrapper}>
+            {children}
+          </div>
         </div>
       </div>
     ) : null,

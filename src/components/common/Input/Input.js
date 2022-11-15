@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ErrorMessage from "../ErrorMessage";
+import Error from "components/common/Error";
 import "./Input.module.scss";
 
 export const Input = (props) => {
@@ -32,7 +32,7 @@ export const Input = (props) => {
 
 Input.propTypes = {
   name: PropTypes.string,
-  labelText: PropTypes.string,
+  label: PropTypes.string,
   placeholderText: PropTypes.string,
 };
 
@@ -151,7 +151,7 @@ export class InputText extends Component {
           onChange={this.handleOnChange}
           autoFocus={focus}
         />
-        {!this.state.isValid && <ErrorMessage errorMessage={errorMessage} />}
+        {!this.state.isValid && <Error errorMessage={errorMessage} />}
       </div>
     );
   }
@@ -193,7 +193,7 @@ export class InputEmail extends Component {
           value={this.state.value}
           onChange={this.handleOnChange}
         />
-        {!this.state.isValid && <ErrorMessage errorMessage={errorMessage} />}
+        {!this.state.isValid && <Error errorMessage={errorMessage} />}
       </div>
     );
   }
@@ -231,7 +231,7 @@ export class InputPassword extends Component {
           value={this.state.value}
           onChange={this.handleOnChange}
         />
-        {!this.state.isValid && <ErrorMessage errorMessage={errorMessage} />}
+        {!this.state.isValid && <Error errorMessage={errorMessage} />}
       </div>
     );
   }
@@ -291,7 +291,7 @@ export class InputTextArea extends Component {
           onChange={this.handleOnChange}
           onFocus={focus}
         />
-        {!this.state.isValid && <ErrorMessage errorMessage={errorMessage} />}
+        {!this.state.isValid && <Error errorMessage={errorMessage} />}
       </div>
     );
   }
@@ -347,7 +347,7 @@ export class InputSelect extends Component {
               </option>
             ))}
         </select>
-        {!this.state.isValid && <ErrorMessage errorMessage={errorMessage} />}
+        {!this.state.isValid && <Error errorMessage={errorMessage} />}
       </div>
     );
   }

@@ -1,9 +1,6 @@
-import React from 'react';
+import styles from './Error.module.scss';
 
-import styles from './error.module.scss';
-
-const Error = ({ message }) => {
+export default function Error({ message }) {
 	return <div className={styles.error}>{message}</div>;
 };
 
-export default Error;

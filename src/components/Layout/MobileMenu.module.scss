@@ -1,4 +1,4 @@
-@import "../../styles";
+@use "styles/abstracts";
 
 .offCanvasContainer {
   position: fixed;
@@ -14,7 +14,7 @@
   height: 100%;
   width: 100%;
   transition: all 0.2s ease-in;
-  background-color: $primary;
+  background-color: abstracts.$primary;
   overflow: hidden;
   z-index: -1;
 }
@@ -22,8 +22,8 @@
 .offscreenNavWrapper {
   opacity: 0;
   z-index: 1;
-  transition: all $duration * 2 ease-in;
-  background-color: $primary;
+  transition: all abstracts.$duration * 2 ease-in;
+  background-color: abstracts.$primary;
 }
 
 .openNav {
@@ -39,7 +39,7 @@
   }
 }
 
-@media screen and (min-width: $tablet) {
+@media screen and (min-width: abstracts.$tablet) {
   .offCanvasContainer {
     display: none;
   }

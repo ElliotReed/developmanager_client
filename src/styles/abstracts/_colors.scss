@@ -1,20 +1,113 @@
 /* colors, sass */
 $black: #222222;
 $white: invert($black);
-$neutral: mix($black, $white, 25);
-$gray: mix($black, $white, 25);
-$darkGray: invert($gray);
+$neutral: mix($black, $white, 25%);
 $primary: #556655;
-$primaryLight: #6c826c;
-$secondary: #2c2c2c;
-$tertiary: #e4ddcd;
-$triadic: #665555;
-$triadic2: #555566;
-$tetradic: #665e55;
-
-$text_dark: #2c2c2c;
-$text_light: $white;
 
 $errorColor: #662222;
 $warningColor: #e2e263;
 $successColor: #556655;
+
+@function tint($color, $percentage) {
+  $tintWhite: scale-color($color, $lightness: 76%);
+  @return mix($tintWhite, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  $tintBlack: scale-color($color, $lightness: -76%);
+  @return mix($tintBlack, $color, $percentage);
+}
+
+$black-100: tint($black, 76%);
+$black-200: tint($black, 47%);
+$black-300: tint($black, 29%);
+$black-400: tint($black, 18%);
+$black-500: $black;
+$black-600: shade($black, 18%);
+$black-700: shade($black, 29%);
+$black-800: shade($black, 47%);
+$black-900: shade($black, 76%);
+
+$white-100: tint($white, 76%);
+$white-200: tint($white, 47%);
+$white-300: tint($white, 29%);
+$white-400: tint($white, 18%);
+$white-500: $white;
+$white-600: shade($white, 18%);
+$white-700: shade($white, 29%);
+$white-800: shade($white, 47%);
+$white-900: shade($white, 76%);
+
+$neutral-100: tint($neutral, 76%);
+$neutral-200: tint($neutral, 47%);
+$neutral-300: tint($neutral, 29%);
+$neutral-400: tint($neutral, 18%);
+$neutral-500: $neutral;
+$neutral-600: shade($neutral, 18%);
+$neutral-700: shade($neutral, 29%);
+$neutral-800: shade($neutral, 47%);
+$neutral-900: shade($neutral, 76%);
+
+$primary-100: tint($primary, 76%);
+$primary-200: tint($primary, 47%);
+$primary-300: tint($primary, 29%);
+$primary-400: tint($primary, 18%);
+$primary-500: $primary;
+$primary-600: shade($primary, 18%);
+$primary-700: shade($primary, 29%);
+$primary-800: shade($primary, 47%);
+$primary-900: shade($primary, 76%);
+
+$colors: (
+  black: (100: $black-100,
+    200: $black-200,
+    300: $black-300,
+    400: $black-400,
+    500: $black-500,
+    600: $black-600,
+    700: $black-700,
+    800: $black-800,
+    900: $black-900, ),
+  white: (100: $white-100,
+    200: $white-200,
+    300: $white-300,
+    400: $white-400,
+    500: $white-500,
+    600: $white-600,
+    700: $white-700,
+    800: $white-800,
+    900: $white-900, ),
+  neutral: (100: $neutral-100,
+    200: $neutral-200,
+    300: $neutral-300,
+    400: $neutral-400,
+    500: $neutral-500,
+    600: $neutral-600,
+    700: $neutral-700,
+    800: $neutral-800,
+    900: $neutral-900, ),
+  primary: (100: $primary-100,
+    200: $primary-200,
+    300: $primary-300,
+    400: $primary-400,
+    500: $primary-500,
+    600: $primary-600,
+    700: $primary-700,
+    800: $primary-800,
+    900: $primary-900, ),
+  state: (info: #e9f1f9,
+    error: #884455,
+    warning: #888800,
+    success: #448855,
+  ),
+);
+
+@function color($keys...) {
+  $value: $colors;
+
+  @each $key in $keys {
+    $value: map-get($value, $key )
+  }
+
+  @return $value
+}

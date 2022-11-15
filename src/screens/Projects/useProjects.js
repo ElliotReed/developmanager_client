@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useAxios } from "libs/authentication/axios/useAxios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function useProjects() {
   const axiosInstance = useAxios();
-  let history = useHistory();
+  let navigate = useNavigate();
   const [loading, setLoading] = React.useState(false);
   const [projects, setProjects] = React.useState([]);
   const [requestError, setRequestError] = React.useState("");
@@ -13,11 +13,11 @@ export default function useProjects() {
     const newProjectList = [...projects, newProject];
     newProjectList.sort((a, b) => (a.name > b.name ? 1 : -1));
     setProjects(newProjectList);
-    history.push(`/projects/${newProject.id}`);
+    navigate.push(`/projects/${newProject.id}`);
   };
 
   const deleteProject = (projectId) => {
-    history.push("/projects");
+    navigate.push("/projects");
     const filteredList = projects.filter((project) => project.id !== projectId);
     setProjects(filteredList);
   };

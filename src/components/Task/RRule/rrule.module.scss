@@ -1,16 +1,16 @@
-@import "styles";
+@use "styles/abstracts";
 
 .recurrence {
-  margin-top: $margin;
+  margin-top: abstracts.$margin;
   display: grid;
   grid-template-columns: 38% 62%;
-  background: $primary;
-  padding: $padding;
-  color: $white;
+  background: abstracts.$primary;
+  padding: abstracts.$padding;
+  color: abstracts.$white;
 
   & p {
     grid-column: 1 / 3;
-    color: lighten($primary, 38%);
+    color: lighten(abstracts.$primary, 38%);
     font-weight: 600;
   }
 
@@ -32,19 +32,19 @@
     grid-column: 2 / 3;
 
     & input {
-      margin: 0 $margin;
+      margin: 0 abstracts.$margin;
       width: 5rem;
-      padding: $padding;
+      padding: abstracts.$padding;
     }
 
     & button {
-      margin: $margin 0;
+      margin: abstracts.$margin 0;
       width: 62%;
-      @include border();
-      @include paddingBox;
-      @include gradient($primary);
+      @include abstracts.border();
+      @include abstracts.paddingBox;
+      @include abstracts.gradient(abstracts.$primary);
       font-size: 0.618rem;
-      color: lighten($primary, 62%);
+      color: lighten(abstracts.$primary, 62%);
     }
   }
 }

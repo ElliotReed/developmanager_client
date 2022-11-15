@@ -1,9 +1,6 @@
-import React from "react";
-import { render } from "@testing-library/react";
-import App from "./App";
-
-test("renders learn react link", () => {
-  // const { getByText } = render(<App />);
-  // const linkElement = getByText(/developManager/i);
-  // expect(linkElement).toBeInTheDocument();
-});
+// import { expect } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'
+it('returns a dummy test', function () {
+  const number = 2
+  expect(number).toEqual(2)
+})

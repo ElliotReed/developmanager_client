@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
     "baseUrl": "src"
-  },
-  "exclude": [".archive", "node_modules", "dist"],
-  "include": ["src", ".archive/ProtectedRoute", ".archive/PrivateRoute"]
+  }
 }

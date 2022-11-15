@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./utils/fontawesome";
@@ -10,19 +10,16 @@ import "./styles/main.scss";
 
 import AppProviders from "./context";
 
-const root = document.getElementById("develop-manager");
-
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('develop-manager'));
+root.render(
   <React.StrictMode>
     <AppProviders>
       <App />
     </AppProviders>
-  </React.StrictMode>,
-  root
+  </React.StrictMode>
 );
-// module.hot && module.hot.accept();
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

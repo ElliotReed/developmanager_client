@@ -1,26 +1,17 @@
-@import "styles";
+@use "styles/abstracts";
 
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: (1rem * $goldenRatioDecrease) (1.618rem * $goldenRatioDecrease);
-  position: relative;
   line-height: 0;
-  background-color: $primary;
-}
-
-.logo {
-  h1 {
-    a {
-      color: $black;
-      text-shadow: -1px -1px 0 $primary, 1px -1px 0 $primary, -1px 1px 0 $primary, 1px 1px 0 $primary;
-    }
-  }
+  background-color: abstracts.$primary;
+  padding: abstracts.$space-sm;
 }
 
 .mainNavWrapper {
-  display: none;
+  display: flex;
 }
 
 // Hamburger
@@ -38,20 +29,23 @@
   text-transform: none;
   background-color: transparent;
   border: 1px solid red;
-  margin: 0 1rem * $goldenRatio;
+  margin: 0 1rem * abstracts.$goldenRatio;
   overflow: visible;
   z-index: 2;
 }
+
 .hamburger:hover {
   opacity: 0.7;
 }
+
 .hamburger.isActive:hover {
   opacity: 0.7;
 }
+
 .hamburger.isActive .hamburgerInner,
 .hamburger.isActive .hamburgerInner::before,
 .hamburger.isActive .hamburgerInner::after {
-  background-color: $black;
+  background-color: abstracts.$black;
 }
 
 .hamburger-box {
@@ -66,26 +60,30 @@
   top: 50%;
   margin-top: -2px;
 }
+
 .hamburgerInner,
 .hamburgerInner::before,
 .hamburgerInner::after {
   width: 40px;
   height: 4px;
-  background-color: $primary;
+  background-color: abstracts.$primary;
   border-radius: 4px;
   position: absolute;
   transition-property: all;
-  transition-duration: $duration;
+  transition-duration: abstracts.$duration;
   transition-timing-function: ease;
 }
+
 .hamburgerInner::before,
 .hamburgerInner::after {
   content: "";
   display: block;
 }
+
 .hamburgerInner::before {
   top: -10px;
 }
+
 .hamburgerInner::after {
   bottom: -10px;
 }
@@ -94,9 +92,11 @@
   transition-duration: 0.075s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
+
 .hamburgerSqueeze .hamburgerInner::before {
   transition: top 0.075s 0.12s ease, opacity 0.075s ease;
 }
+
 .hamburgerSqueeze .hamburgerInner::after {
   transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
@@ -106,18 +106,20 @@
   transition-delay: 0.12s;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+
 .hamburgerSqueeze.isActive .hamburgerInner::before {
   top: 0;
   opacity: 0;
   transition: top 0.075s ease, opacity 0.075s 0.12s ease;
 }
+
 .hamburgerSqueeze.isActive .hamburgerInner::after {
   bottom: 0;
   transform: rotate(-90deg);
   transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-@media screen and (min-width: $tablet) {
+@media screen and (min-width: abstracts.$tablet) {
   .mainNavWrapper {
     display: flex;
   }

@@ -1,18 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import style from "./Nav.module.scss";
+import styles from "./Nav.module.scss";
 
 const Nav = ({ background }) => (
-  <nav className={background ? style.backgroundNav : style.nav}>
+  <nav className={background ? styles.backgroundNav : styles.nav}>
     <ul>
       <li>
-        <NavLink to="/projects" activeClassName={style.active}>
+        <NavLink to="/projects" className={({ isActive }) => isActive ? styles.active : undefined}>
           Projects
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard" activeClassName={style.active}>
+        <NavLink to="/dashboard" className={({ isActive }) => isActive ? styles.active : undefined}>
           Dashboard
         </NavLink>
       </li>

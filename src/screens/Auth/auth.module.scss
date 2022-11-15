@@ -1,7 +1,8 @@
-@import "styles";
+@use "styles/abstracts";
 
 .Auth {
-  padding: $padding;
+  padding: abstracts.$padding;
+
   form {
     padding: 4rem 0;
     display: grid;
@@ -13,15 +14,15 @@
     }
 
     input {
-      margin-bottom: $margin;
+      margin-bottom: abstracts.$margin;
       display: block;
-      color: $black;
-      @include paddingBox;
-      @include border();
+      color: abstracts.$black;
+      @include abstracts.paddingBox;
+      @include abstracts.border();
 
       &[type="checkbox"] {
         display: inline-block;
-        margin-left: $margin * $goldenRatioDecrease;
+        margin-left: abstracts.$margin * abstracts.$goldenRatioDecrease;
         width: initial;
       }
 
@@ -31,7 +32,7 @@
       }
 
       &[type="submit"] {
-        @include button();
+        @include abstracts.button();
         margin-left: 0;
         margin-right: 0;
       }
@@ -47,7 +48,7 @@
   }
 }
 
-@media screen and (min-width: $tablet) {
+@media screen and (min-width: abstracts.$tablet) {
   .Auth {
     .form {
       padding: 4rem 10rem;

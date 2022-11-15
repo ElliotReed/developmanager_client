@@ -1,17 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import style from './Logo.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 
-export default function Logo({ siteTitle }) {
+import styles from './Logo.module.scss'
+
+export default function Logo({ siteTitle, smallDisplay = false }) {
+	const displayClass = smallDisplay ? styles.smallDisplay : null
+
 	return (
-		<div className={style.logo}>
-			<Link to="/">
-				<span>
-					<FontAwesomeIcon icon={['fas', 'laptop-code']} />
-				</span>
-				<p>{siteTitle}</p>
-			</Link>
-		</div>
-	);
+		<LogoLink>
+			<span className={displayClass}>
+				{siteTitle}
+			</span>
+		</LogoLink>
+	)
+}
+
+function LogoLink({ children }) {
+	return (
+		<Link className={styles.logo} to="/">
+			<FontAwesomeIcon className={styles.icon} icon='fa-solid fa-laptop-code' size='lg' />
+			{children}
+		</Link>
+	)
 }

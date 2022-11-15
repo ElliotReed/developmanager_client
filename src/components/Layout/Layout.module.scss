@@ -1,5 +1,5 @@
-@import "styles";
+@use "styles/layouts";
 
 .siteWrapper {
-  @include appFixedContainer;
+  @include layouts.appFixedContainer;
 }

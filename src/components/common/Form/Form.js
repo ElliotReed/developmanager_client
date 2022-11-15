@@ -1,16 +1,25 @@
-import React from "react";
+import PropTypes from 'prop-types';
+
+import Heading from 'components/common/Heading';
+
 import styles from "./Form.module.scss";
 
-function FormHeader({ title, children }) {
+function FormHeader({ title = null, children }) {
   return (
     <header className={styles.FormHeader}>
-      <h3 className={styles.title}>{title}</h3>
+      {title && <Heading level={2} className={styles.title}>{title}</Heading>}
+      {children}
     </header>
   );
 }
 
+FormHeader.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.element
+}
+
 function FormBody({ children }) {
-  return <main className={styles.FormBody}>{children}</main>;
+  return <div className={styles.FormBody}>{children}</div>;
 }
 
 function FormFooter({ children }) {

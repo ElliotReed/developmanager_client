@@ -1,4 +1,4 @@
-@import "styles";
+@use "styles/abstracts";
 
 .Welcome {
   width: 100%;
@@ -10,13 +10,13 @@
 .jumbotron {
   font-size: 1.618rem;
   // padding: 5em;
-  background-color: $primary;
+  background-color: abstracts.$primary;
   max-width: 76%;
   justify-self: center;
   // min-height: 61.8vh;
   // display: grid;
   // place-content: center;
-  @include border($width: 0);
+  @include abstracts.border($width: 0);
 
   // .head,
   // .body {
@@ -31,17 +31,18 @@
 
   .body {
     padding: 2em;
-    background-color: $white;
-    color: $primary;
+    background-color: abstracts.$white;
+    color: abstracts.$primary;
   }
 
   footer {
     display: flex;
     justify-content: center;
     font-size: initial;
+
     a {
-      @include button($bg-color: $white, $text-color: $primary);
-      @include button($bg-color: $white, $text-color: $primary);
+      @include abstracts.button($bg-color: abstracts.$white, $text-color: abstracts.$primary);
+      @include abstracts.button($bg-color: abstracts.$white, $text-color: abstracts.$primary);
     }
   }
 }

@@ -58,7 +58,7 @@ export default function RRule({ task }) {
 
   return (
     <div className={styles.rrule}>
-      <section className={styles.recurrence}>
+      <div className={styles.recurrence}>
         <p>Recurrence</p>
         <div className={styles.radioGroup}>
           {frequencyOptions.map((option, i) => (
@@ -96,7 +96,7 @@ export default function RRule({ task }) {
             Remove Recurrence
           </button>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

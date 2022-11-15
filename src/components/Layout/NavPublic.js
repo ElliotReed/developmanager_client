@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import style from "./Nav.module.scss";
+import styles from "./Nav.module.scss";
 
 const NavPublic = ({ background }) => (
-  <nav className={background ? style.backgroundNav : style.nav}>
+  <nav className={background ? styles.backgroundNav : styles.nav}>
     <ul>
       <li>
-        <NavLink to="/" activeClassName={style.active}>
+        <NavLink to="/" className={({ isActive }) => isActive ? styles.active : undefined}>
           Home
         </NavLink>
       </li>
