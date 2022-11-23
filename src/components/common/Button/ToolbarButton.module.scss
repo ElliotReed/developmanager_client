@@ -5,7 +5,7 @@
   @include abstracts.border(transparent);
 
   &:hover:enabled {
-    background: transparent;
-    color: abstracts.$neutral;
+    background: abstracts.color(black, 700);
+    // color: abstracts.$neutral;
   }
 }

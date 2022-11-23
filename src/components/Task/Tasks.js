@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef } from "react";
+import * as React from "react";
 
 import useTask from "./useTask";
 
@@ -11,28 +11,51 @@ import ToolbarButton from "components/common/Button/ToolbarButton";
 
 import styles from "./task.module.scss";
 
-function TaskHeader({ modal }) {
+function TaskHeader({ modal, setShowFutureTasks, showFutureTasks }) {
   return (
     <header>
       <h3>Tasks</h3>
+
       <Toolbar>
-        <ToolbarButton onClick={() => modal.current.open()}>
+        <ToolbarButton
+          onClick={() => modal.current.open()}
+          title="Add task"
+        >
           <FontAwesomeIcon icon={["fas", "plus"]} />
+        </ToolbarButton>
+
+        <ToolbarButton
+          onClick={() => setShowFutureTasks(!showFutureTasks)}
+          title="Toggle task view"
+        >
+          <FontAwesomeIcon icon={["fas", "sort"]} />
+          <span className={styles.taskViewTextContainer}>
+            {showFutureTasks ? "upcoming tasks" : "current tasks"}
+          </span>
+
         </ToolbarButton>
       </Toolbar>
     </header>
   );
 }
 export default function Task({ foreignId }) {
-  const { tasks, addTask, handleCheckCompleted, updateTasks, updateTask } =
-    useTask(foreignId);
-  const modal = useRef(null);
+  const [showFutureTasks, setShowFutureTasks] = React.useState(false);
+  const { tasks, addTask, futureTasks, handleCheckCompleted, updateTasks, updateTask } =
+    useTask(foreignId, showFutureTasks && "future=true");
+  const modal = React.useRef(null);
 
   return (
     <div className={styles.task}>
-      <TaskHeader modal={modal} />
+      <TaskHeader modal={modal}
+        showFutureTasks={showFutureTasks}
+        setShowFutureTasks={setShowFutureTasks}
+
+      />
+
       <TaskList
         tasks={tasks}
+        futureTasks={futureTasks}
+        showFutureTasks={showFutureTasks}
         updateTasks={updateTasks}
         updateTask={updateTask}
         handleCheckCompleted={handleCheckCompleted}

@@ -21,15 +21,15 @@ const Header = ({ siteTitle, isActive, setIsActive }) => {
         {auth.user ? <Nav /> : <NavPublic />}
         {auth.user ? <UserMenu /> : <LoginRegister />}
       </div>
-      {/* <button
-      className={hamburgerStyle}
-      type="button"
-      onClick={() => setIsActive(!isActive)}
-    >
-      <span className={styles.hamburgerBox}>
-        <span className={styles.hamburgerInner}></span>
-      </span>
-    </button> */}
+      <button
+        className={hamburgerStyle}
+        type="button"
+        onClick={() => setIsActive(!isActive)}
+      >
+        <span className={styles.hamburgerBox}>
+          <span className={styles.hamburgerInner}></span>
+        </span>
+      </button>
     </header>
   );
 };

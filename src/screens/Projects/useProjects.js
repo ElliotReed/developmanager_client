@@ -13,7 +13,7 @@ export default function useProjects() {
     const newProjectList = [...projects, newProject];
     newProjectList.sort((a, b) => (a.name > b.name ? 1 : -1));
     setProjects(newProjectList);
-    navigate.push(`/projects/${newProject.id}`);
+    return navigate(`/projects/${newProject.id}`);
   };
 
   const deleteProject = (projectId) => {

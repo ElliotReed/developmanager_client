@@ -50,6 +50,8 @@ function HasRecurrence({ task }) {
 
 export default function TaskList({
   tasks,
+  futureTasks,
+  showFutureTasks,
   updateTasks,
   handleCheckCompleted,
   updateTask,
@@ -69,13 +71,14 @@ export default function TaskList({
   return (
     <>
       <ul className={styles.task__list}>
-        {tasks.map((task) => {
+        {showFutureTasks && futureTasks.map((task) => {
           return (
             <li key={task.id} data-id={task.id}>
               <section className={styles.topbar}>
-                <DateDisplay>{task.dtStart}</DateDisplay>
+                <DateDisplay date={task.dtStart} />
                 <HasRecurrence task={task} />
               </section>
+
               <section className={styles.taskInfo}>
                 <div className={styles.checkbox}>
                   <input
@@ -89,16 +92,56 @@ export default function TaskList({
                     // className={styles.checkbox}
                     htmlFor={task.id}
                     title="Check to complete"
-                    // className={task.dtCompleted ? styles.strike : styles.task}
+                  // className={task.dtCompleted ? styles.strike : styles.task}
                   >
                     {task.task}
                   </label>
                 </div>
+
                 <Toolbar>
                   <ToolbarButton onClick={handleEditTaskClick}>
                     <FontAwesomeIcon icon={["fas", "edit"]} />
                   </ToolbarButton>
                 </Toolbar>
+
+                <TaskDetails task={task} />
+              </section>
+            </li>
+          );
+        })}
+        {!showFutureTasks && tasks.map((task) => {
+          return (
+            <li key={task.id} data-id={task.id}>
+              <section className={styles.topbar}>
+                <DateDisplay date={task.dtStart} />
+                <HasRecurrence task={task} />
+              </section>
+
+              <section className={styles.taskInfo}>
+                <div className={styles.checkbox}>
+                  <input
+                    type="checkbox"
+                    name={task.id}
+                    id={task.id}
+                    onChange={() => handleCheckCompleted(task)}
+                    checked={task.dtCompleted !== null ? true : false}
+                  />
+                  <label
+                    // className={styles.checkbox}
+                    htmlFor={task.id}
+                    title="Check to complete"
+                  // className={task.dtCompleted ? styles.strike : styles.task}
+                  >
+                    {task.task}
+                  </label>
+                </div>
+
+                <Toolbar>
+                  <ToolbarButton onClick={handleEditTaskClick}>
+                    <FontAwesomeIcon icon={["fas", "edit"]} />
+                  </ToolbarButton>
+                </Toolbar>
+
                 <TaskDetails task={task} />
               </section>
             </li>

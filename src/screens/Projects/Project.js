@@ -83,10 +83,12 @@ export default function Project({ updateProjects, deleteProject }) {
           <Heading level={2} className={classnames(project.archive ? styles.inactive : null)}>
             {project.name}
           </Heading>
+
           <Toolbar>
             <ToolbarButton title="Edit" onClick={() => modal.current.open()}>
               <FontAwesomeIcon icon={["fas", "edit"]} />
             </ToolbarButton>
+
             <ToolbarButton
               title="Delete"
               onClick={() => deleteModal.current.open()}
@@ -94,9 +96,13 @@ export default function Project({ updateProjects, deleteProject }) {
               <FontAwesomeIcon icon={["fas", "times"]} />
             </ToolbarButton>
           </Toolbar>
+
           <ProjectStatus isArchived={project.archive} />
+
           <ProjectHistory project={project} />
+
           <Task foreignId={project.id} />
+
           <Modal ref={modal} fade={true}>
             <EditProject
               project={project}
@@ -105,6 +111,7 @@ export default function Project({ updateProjects, deleteProject }) {
               updateProjects={updateProjects}
             />
           </Modal>
+
           <Modal ref={deleteModal} fade={true}>
             <DeleteProject
               project={project}

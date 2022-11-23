@@ -5,6 +5,7 @@ import {
   faEllipsisV,
   faLaptopCode,
   faPlus,
+  faSort,
   faSyncAlt,
   faTimes,
   faUserCircle,
@@ -16,6 +17,7 @@ library.add(
   faEllipsisV,
   faLaptopCode,
   faPlus,
+  faSort,
   faSyncAlt,
   faTimes,
   faUserCircle

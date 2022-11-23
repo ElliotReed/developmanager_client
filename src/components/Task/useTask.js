@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import * as React from "react";
 import { add } from "date-fns";
 
 import TaskService from "services/TaskService";
@@ -54,10 +54,11 @@ function sortTasks(tasks) {
     });
 }
 
-export default function useTask(foreignId) {
-  const [tasks, setTasks] = useState([]);
+export default function useTask(foreignId, queryString = "") {
+  const [tasks, setTasks] = React.useState([]);
+  const [futureTasks, setFutureTasks] = React.useState([])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!foreignId) return;
     const url = `byforeign/${foreignId}`;
     TaskService.getTasks(url)
@@ -70,6 +71,22 @@ export default function useTask(foreignId) {
         console.error(err);
       });
   }, [foreignId]);
+
+  React.useEffect(() => {
+    console.warn('in queryString useEffect')
+    if (!foreignId) return;
+    if (!queryString) return;
+    const url = `byforeign/${foreignId}?${queryString}`;
+    TaskService.getTasks(url)
+      .then((data) => {
+        if (data.error) return;
+        const sortedData = sortTasks(data);
+        setFutureTasks(sortedData);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [foreignId, queryString]);
 
   const addTask = async (task) => {
     const newTask = await TaskService.addTask(task);
@@ -173,6 +190,7 @@ export default function useTask(foreignId) {
   return {
     tasks,
     setTasks,
+    futureTasks,
     addToTaskList,
     handleCheckCompleted,
     updateTasks,

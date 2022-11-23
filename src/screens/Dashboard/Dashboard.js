@@ -7,7 +7,6 @@ import DateDisplay from 'components/common/datetime/DateDisplay';
 import { ScreenHeading } from 'components/common/Heading';
 
 import styles from "./dashboard.module.scss";
-import MaxWidthContainer from 'components/common/MaxWidthContainer';
 export default function Dashboard() {
   const [projectTasks, setProjectTasks] = React.useState([])
 
@@ -42,7 +41,7 @@ function ProjectTasks({ projectTasks }) {
 
 function ProjectTaskListItem({ task }) {
   return (
-    <li className={styles.projectTaskListItem}>
+    <li className={styles.projectTaskListItem} key={task.id}>
       <Link to={`/projects/${task.project.id}`}>{task.project.name}</Link>
       <br />
       <div>

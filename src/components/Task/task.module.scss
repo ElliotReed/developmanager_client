@@ -14,4 +14,9 @@
     gap: abstracts.$margin;
     align-items: center;
   }
+
+  .taskViewTextContainer {
+    padding-inline-start: abstracts.$space-xsm;
+    font-weight: abstracts.$fw-md;
+  }
 }
