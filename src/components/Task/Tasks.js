@@ -13,7 +13,7 @@ import styles from "./task.module.scss";
 
 function TaskHeader({ modal, setShowFutureTasks, showFutureTasks }) {
   return (
-    <header>
+    <header className={styles.task__header}>
       <h3>Tasks</h3>
 
       <Toolbar>
@@ -29,10 +29,10 @@ function TaskHeader({ modal, setShowFutureTasks, showFutureTasks }) {
           title="Toggle task view"
         >
           <FontAwesomeIcon icon={["fas", "sort"]} />
+
           <span className={styles.taskViewTextContainer}>
             {showFutureTasks ? "upcoming tasks" : "current tasks"}
           </span>
-
         </ToolbarButton>
       </Toolbar>
     </header>
@@ -40,21 +40,20 @@ function TaskHeader({ modal, setShowFutureTasks, showFutureTasks }) {
 }
 export default function Task({ foreignId }) {
   const [showFutureTasks, setShowFutureTasks] = React.useState(false);
-  const { tasks, addTask, futureTasks, handleCheckCompleted, updateTasks, updateTask } =
-    useTask(foreignId, showFutureTasks && "future=true");
+  const { tasks, addTask, handleCheckCompleted, updateTasks, updateTask } =
+    useTask(foreignId);
   const modal = React.useRef(null);
 
   return (
     <div className={styles.task}>
-      <TaskHeader modal={modal}
+      <TaskHeader
+        modal={modal}
         showFutureTasks={showFutureTasks}
         setShowFutureTasks={setShowFutureTasks}
-
       />
 
       <TaskList
         tasks={tasks}
-        futureTasks={futureTasks}
         showFutureTasks={showFutureTasks}
         updateTasks={updateTasks}
         updateTask={updateTask}

@@ -54,9 +54,8 @@ function sortTasks(tasks) {
     });
 }
 
-export default function useTask(foreignId, queryString = "") {
+export default function useTask(foreignId) {
   const [tasks, setTasks] = React.useState([]);
-  const [futureTasks, setFutureTasks] = React.useState([])
 
   React.useEffect(() => {
     if (!foreignId) return;
@@ -71,22 +70,6 @@ export default function useTask(foreignId, queryString = "") {
         console.error(err);
       });
   }, [foreignId]);
-
-  React.useEffect(() => {
-    console.warn('in queryString useEffect')
-    if (!foreignId) return;
-    if (!queryString) return;
-    const url = `byforeign/${foreignId}?${queryString}`;
-    TaskService.getTasks(url)
-      .then((data) => {
-        if (data.error) return;
-        const sortedData = sortTasks(data);
-        setFutureTasks(sortedData);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [foreignId, queryString]);
 
   const addTask = async (task) => {
     const newTask = await TaskService.addTask(task);
@@ -190,7 +173,6 @@ export default function useTask(foreignId, queryString = "") {
   return {
     tasks,
     setTasks,
-    futureTasks,
     addToTaskList,
     handleCheckCompleted,
     updateTasks,

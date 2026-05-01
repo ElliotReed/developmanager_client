@@ -10,6 +10,8 @@ import Modal from "components/common/Modal";
 
 import styles from "./task_list.module.scss";
 
+import { isFuture } from 'date-fns'
+
 function TaskDetails({ task }) {
   const handleShowDetailsClick = (e) => {
     const details = e.currentTarget.nextSibling;
@@ -50,7 +52,6 @@ function HasRecurrence({ task }) {
 
 export default function TaskList({
   tasks,
-  futureTasks,
   showFutureTasks,
   updateTasks,
   handleCheckCompleted,
@@ -68,48 +69,20 @@ export default function TaskList({
     setSelectedTask(task);
   };
 
+
+  const taskTimeFilter = (task) => {
+    const taskDate = new Date(task.dtStart)
+    const futureDate = isFuture(taskDate)
+    if (showFutureTasks) {
+      return futureDate
+    }
+    return !futureDate
+  }
+
   return (
     <>
       <ul className={styles.task__list}>
-        {showFutureTasks && futureTasks.map((task) => {
-          return (
-            <li key={task.id} data-id={task.id}>
-              <section className={styles.topbar}>
-                <DateDisplay date={task.dtStart} />
-                <HasRecurrence task={task} />
-              </section>
-
-              <section className={styles.taskInfo}>
-                <div className={styles.checkbox}>
-                  <input
-                    type="checkbox"
-                    name={task.id}
-                    id={task.id}
-                    onChange={() => handleCheckCompleted(task)}
-                    checked={task.dtCompleted !== null ? true : false}
-                  />
-                  <label
-                    // className={styles.checkbox}
-                    htmlFor={task.id}
-                    title="Check to complete"
-                  // className={task.dtCompleted ? styles.strike : styles.task}
-                  >
-                    {task.task}
-                  </label>
-                </div>
-
-                <Toolbar>
-                  <ToolbarButton onClick={handleEditTaskClick}>
-                    <FontAwesomeIcon icon={["fas", "edit"]} />
-                  </ToolbarButton>
-                </Toolbar>
-
-                <TaskDetails task={task} />
-              </section>
-            </li>
-          );
-        })}
-        {!showFutureTasks && tasks.map((task) => {
+        {tasks.filter(taskTimeFilter).map((task) => {
           return (
             <li key={task.id} data-id={task.id}>
               <section className={styles.topbar}>

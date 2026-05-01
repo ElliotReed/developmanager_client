@@ -8,7 +8,7 @@
   color: abstracts.$white;
   // padding: abstracts.$padding;
 
-  header {
+  .task__header {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: abstracts.$margin;

@@ -1,10 +1,13 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 import styles from './Heading.module.scss';
+
 export function Heading({
   level,
   fontSize = null,
   transform = null,
+  className,
   children
 }) {
   const HeadingTag = `h${level}`;
@@ -12,7 +15,8 @@ export function Heading({
   return (
     <HeadingTag
       className={classNames(
-        { [styles[transform]]: transform }
+        { [styles[transform]]: transform },
+        className
       )}
       style={{ fontSize: fontSize }}
     >
